@@ -1,0 +1,54 @@
+/*
+Theme Name: Cinestar Theme
+Theme URI: http://yourdomain.com
+Author: Nhat Hoa
+Description: Custom WordPress theme for Cinestar-like cinema site
+Version: 1.0
+License: GPLv2
+Text Domain: cinestar
+*/
+
+/* Reset đơn giản */
+/* style.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+header {
+  background: #000;
+  padding: 15px;
+  text-align: center;
+}
+
+header h1 {
+  color: #ffcc00;
+  margin: 0;
+  font-size: 32px;
+}
+
+nav {
+  background: #111;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+footer {
+  background: #111;
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-size: 14px;
+}
