@@ -52,3 +52,76 @@ footer {
   color: #888;
   font-size: 14px;
 }
+
+.cinestar-movies-list {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+.cinestar-movie-box {
+    display: flex;
+    flex-direction: row;
+    background: #181f37;
+    border-radius: 16px;
+    overflow: hidden;
+    min-width: 600px;
+    max-width: 700px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.movie-poster img {
+    width: 220px;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+.movie-info {
+    padding: 24px 24px 24px 24px;
+    color: #fff;
+    flex: 1;
+}
+.movie-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.movie-meta span {
+    margin-right: 16px;
+    font-size: 1rem;
+    color: #ffe600;
+}
+.movie-desc {
+    margin: 10px 0 18px 0;
+    color: #bbb;
+}
+.showtimes-block {
+    margin-top: 12px;
+}
+.showtime-date {
+    margin-bottom: 8px;
+}
+.showtimes {
+    margin-top: 5px;
+}
+.showtime-btn {
+    background: #2d2d7d;
+    color: #ffe600;
+    border: 2px solid #ffe600;
+    border-radius: 6px;
+    padding: 5px 14px;
+    margin-right: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 4px;
+    transition: background 0.2s;
+}
+.showtime-btn:hover {
+    background: #ffe600;
+    color: #2d2d7d;
+}
+
+
