@@ -1,77 +1,69 @@
-<?php
-$args = [
-    'post_type' => 'movie',
-    'posts_per_page' => 12, // Số phim muốn hiển thị
-];
-$query = new WP_Query($args);
-
-if ($query->have_posts()): ?>
-  <h2 class="text-center text-4xl text-white font-extrabold mt-8 mb-8 uppercase">Phim đang chiếu</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <?php while($query->have_posts()): $query->the_post();
-      $genre = get_field('genre');
-      $duration = get_field('duration');
-      $country = get_field('country');
-      $subtitle = get_field('subtitle');
-      $age = get_field('age');
-      $showtimes = get_field('showtimes');
-    ?>
-    <div class="bg-[#181f3a] rounded-xl overflow-hidden flex flex-col md:flex-row shadow-lg">
-      <!-- Poster -->
-      <div class="md:w-1/2 flex-shrink-0">
-        <?php if(has_post_thumbnail()): ?>
-            <?php the_post_thumbnail('movie-poster', ['class'=>'w-full h-full object-cover']); ?>
-        <?php endif; ?>
-      </div>
-      <!-- Info -->
-      <div class="flex-1 p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-white text-2xl font-extrabold uppercase mb-2"><?php the_title(); ?></h3>
-          <div class="flex gap-2 flex-wrap text-yellow-400 mb-2 text-base font-semibold">
-            <?php if($genre): ?>
-              <span class="flex items-center"><svg class="inline h-5 w-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 6v6l4 2" stroke-width="2"/></svg><?= esc_html($genre) ?></span>
-            <?php endif; ?>
-            <?php if($duration): ?>
-              <span class="flex items-center"><svg class="inline h-5 w-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/><path d="M8 6v12" stroke-width="2"/></svg><?= esc_html($duration) ?> phút</span>
-            <?php endif; ?>
-            <?php if($country): ?>
-              <span class="flex items-center"><?= esc_html($country) ?></span>
-            <?php endif; ?>
-            <?php if($subtitle): ?>
-              <span class="flex items-center"><?= esc_html($subtitle) ?></span>
-            <?php endif; ?>
-          </div>
-          <?php if($age): ?>
-            <div class="flex items-center text-white text-sm mb-2">
-              <svg class="inline h-5 w-5 mr-1 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" stroke-width="2"/><path d="M6 21v-2a4 4 0 014-4h0a4 4 0 014 4v2" stroke-width="2"/></svg>
-              <?= esc_html($age) ?>
-            </div>
-          <?php endif; ?>
-        </div>
-        <!-- Showtimes -->
-        <?php if($showtimes): foreach($showtimes as $show): ?>
-        <div class="bg-[#232b47] rounded-xl p-4 mt-3">
-          <div class="font-bold text-white mb-1"><?= esc_html($show['date']) ?></div>
-          <div class="flex gap-2 items-center text-yellow-400 mb-2">
-            <span><?= esc_html($show['room']) ?></span>
-          </div>
-          <div class="flex flex-wrap gap-3">
+<div class="now-showing-section" style="background:linear-gradient(180deg,#171b2e 0,#3d2974 100%);padding:40px 0;">
+    <h2 class="text-center font-extrabold text-3xl md:text-4xl mb-6" style="color:#fff;letter-spacing:3px;">PHIM ĐANG CHIẾU</h2>
+    <div class="swiper now-showing-swiper">
+        <div class="swiper-wrapper">
             <?php
-              if(!empty($show['times'])):
-                $times = explode(',', $show['times']);
-                foreach($times as $time): ?>
-                  <span class="bg-yellow-400 text-[#232b47] font-bold px-3 py-1 rounded-md"><?= trim($time) ?></span>
-                <?php endforeach;
-              endif;
-            ?>
-          </div>
+            $args = [
+                'post_type' => 'movie', // hoặc 'phim' nếu bạn đặt tên CPT là 'phim'
+                'posts_per_page' => 10,
+                'meta_query' => [
+                    [
+                        'key' => 'nhom_phim',
+                        'value' => 'dang_chieu',
+                        'compare' => '='
+                    ]
+                ]
+            ];
+            $query = new WP_Query($args);
+            if ($query->have_posts()):
+                while($query->have_posts()): $query->the_post();
+                ?>
+                <div class="swiper-slide">
+                    <div class="now-showing-movie-card" style="background:#232344;border-radius:16px;overflow:hidden;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.18);padding:18px 12px;">
+                        <div style="position:relative;">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php the_post_thumbnail('large', ['style'=>'width:210px;height:320px;object-fit:cover;border-radius:12px;']); ?>
+                            </a>
+                            <?php if($age=get_field('do_tuoi')): ?>
+                                <div style="position:absolute;top:12px;left:12px;background:#ffeb3b;color:#222;font-weight:900;padding:2px 7px;font-size:1.1rem;border-radius:4px;"><?php echo esc_html($age); ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <h3 class="mt-3 font-bold" style="color:#ffe600;font-size:1.1rem;"><?php the_title(); ?></h3>
+                        <div class="flex gap-2 justify-center my-2">
+                            <a href="#" class="show-trailer-btn" style="color:#fff;text-decoration:underline;font-size:1rem;">Xem Trailer</a>
+                        </div>
+                        <a href="#" class="book-ticket-btn" style="display:inline-block;background:#ffe600;color:#222;font-weight:700;padding:9px 24px;border-radius:6px;margin-top:7px;font-size:1.07rem;">ĐẶT VÉ</a>
+                    </div>
+                </div>
+                <?php endwhile; wp_reset_postdata();
+            else: ?>
+                <div class="swiper-slide"><p style="color:#fff;">Chưa có phim nào.</p></div>
+            <?php endif; ?>
         </div>
-        <?php endforeach; endif; ?>
-        <a href="<?php the_permalink(); ?>" class="text-yellow-400 font-bold mt-2 inline-block hover:underline">Xem thêm lịch chiếu</a>
-      </div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
-    <?php endwhile; wp_reset_postdata(); ?>
-  </div>
-<?php else: ?>
-  <p class="text-white text-center">Hiện chưa có phim nào.</p>
-<?php endif; ?>
+    <div class="flex justify-center mt-6">
+        <a href="/phim-dang-chieu" class="px-8 py-3 rounded border-2 border-yellow-400 text-yellow-400 font-bold text-lg hover:bg-yellow-400 hover:text-gray-900 transition">XEM THÊM</a>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  new Swiper('.now-showing-swiper', {
+    slidesPerView: 4,
+    spaceBetween: 24,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      0: { slidesPerView: 1.1 },
+      600: { slidesPerView: 2 },
+      900: { slidesPerView: 3 },
+      1200: { slidesPerView: 4 }
+    }
+  });
+});
+</script>

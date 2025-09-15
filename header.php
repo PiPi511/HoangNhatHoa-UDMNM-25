@@ -49,10 +49,10 @@
                 </svg>
             </button>
         </form>
-        <!-- User + Đăng nhập + Language -->
+        <!-- User + Đăng nhập (thêm class để popup hoạt động) + Language -->
         <div class="flex items-center gap-4">
             <!-- User -->
-            <a href="#" class="flex items-center gap-1 hover:text-yellow-400 transition">
+            <a href="#" class="flex items-center gap-1 hover:text-yellow-400 transition cinestar-login-link">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 12a5 5 0 100-10 5 5 0 000 10zm-7 8a7 7 0 0114 0H3z"/>
                 </svg>
@@ -67,7 +67,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <!-- Dropdown menu (ẩn/hiện bằng hover) -->
+                <!-- Dropdown menu -->
                 <div class="absolute right-0 mt-2 w-32 bg-white text-gray-900 rounded shadow-lg z-10 hidden group-hover:block">
                     <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-100">
                         <img src="https://cdn.countryflags.com/thumbs/vietnam/flag-round-250.png" alt="VN flag" class="h-4 w-4 mr-2 rounded-full">
@@ -83,7 +83,7 @@
     </div>
 </header>
 
-<!-- Menu trái-phải ngay dưới header, không còn line hở -->
+<!-- Menu trái-phải ngay dưới header -->
 <nav class="bg-gray-900">
     <div class="container mx-auto flex justify-between items-center px-4 border-b border-gray-800">
         <!-- Menu trái -->
@@ -109,7 +109,5 @@
     </div>
 </nav>
 
+<!-- Thông tin rạp Cinestar Huế -->
 <?php get_template_part('template-parts/cinestar-cinema-info'); ?>
-<?php get_template_part('template-parts/cinestar-movie-tabs'); ?>
-
-<?php get_template_part('template-parts/cinestar-now-showing'); ?>
