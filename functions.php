@@ -74,44 +74,51 @@ if ( ! function_exists( 'cinestar_widgets_init' ) ) {
 }
 add_action('widgets_init', 'cinestar_widgets_init');
 
-/**
- * Đăng ký Custom Post Type: Phim
- */
-if ( ! function_exists( 'cinestar_register_cpt_phim' ) ) {
-    function cinestar_register_cpt_phim() {
-        $labels = array(
-            'name'               => __('Phim', 'cinestar'),
-            'singular_name'      => __('Phim', 'cinestar'),
-            'menu_name'          => __('Phim', 'cinestar'),
-            'name_admin_bar'     => __('Phim', 'cinestar'),
-            'add_new'            => __('Thêm mới', 'cinestar'),
-            'add_new_item'       => __('Thêm phim mới', 'cinestar'),
-            'edit_item'          => __('Sửa phim', 'cinestar'),
-            'new_item'           => __('Phim mới', 'cinestar'),
-            'view_item'          => __('Xem phim', 'cinestar'),
-            'all_items'          => __('Tất cả phim', 'cinestar'),
-            'search_items'       => __('Tìm phim', 'cinestar'),
-            'not_found'          => __('Không tìm thấy phim nào.', 'cinestar'),
-            'not_found_in_trash' => __('Không có phim nào trong thùng rác.', 'cinestar'),
-        );
-
-        $args = array(
-            'labels'        => $labels,
-            'public'        => true,
-            'menu_icon'     => 'dashicons-video-alt2',
-            'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
-            'has_archive'   => true,
-            'rewrite'       => array('slug' => 'phim'),
-            'show_in_rest'  => true,
-        );
-
-        register_post_type('phim', $args);
-    }
+// ===== Đăng ký Post Type: Phim =====
+function register_phim_post_type() {
+    register_post_type('phim', array(
+        'labels' => array(
+            'name' => 'Phim',
+            'singular_name' => 'Phim',
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-format-video',
+        'supports' => array('title', 'editor', 'thumbnail'),
+    ));
 }
-add_action('init', 'cinestar_register_cpt_phim');
+add_action('init', 'register_phim_post_type');
+
+
+// ===== Đăng ký Taxonomy: Nhóm phim =====
+function register_nhom_phim_taxonomy() {
+    register_taxonomy(
+        'nhom_phim',   // slug của taxonomy
+        'phim',        // áp dụng cho post type 'phim'
+        array(
+            'labels' => array(
+                'name' => 'Nhóm phim',
+                'singular_name' => 'Nhóm phim',
+            ),
+            'public' => true,
+            'hierarchical' => true, // true = dạng category, false = dạng tag
+            'show_admin_column' => true, // hiển thị cột trong admin
+        )
+    );
+}
+add_action('init', 'register_nhom_phim_taxonomy');
+
 
 // Đảm bảo post và phim đều hỗ trợ ảnh đại diện
 add_action('init', function() {
     add_post_type_support('post', 'thumbnail');
     add_post_type_support('phim', 'thumbnail');
 });
+function cinestar_enqueue_styles() {
+    wp_enqueue_style('cinestar-header', get_template_directory_uri() . '/assets/css/header.css');
+    wp_enqueue_style('cinestar-footer', get_template_directory_uri() . '/assets/css/footer.css');
+    wp_enqueue_style('cinestar-movies', get_template_directory_uri() . '/assets/css/archive-movie.css');
+    wp_enqueue_style('cinestar-membership', get_template_directory_uri() . '/assets/css/membership.css');
+        wp_enqueue_style('cinestar-nav', get_template_directory_uri() . '/assets/css/nav.css');
+}
+add_action('wp_enqueue_scripts', 'cinestar_enqueue_styles');

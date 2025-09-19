@@ -1,0 +1,199 @@
+
+.cinestar-footer {
+  width: 100%;
+  position: relative;
+}
+
+.cinestar-footer-bg {
+  width: 100%;
+  background: radial-gradient(circle at 70% 30%, #7a3cff 0%, #2a2e92 50%, #5b0d8e 100%);
+  padding: 56px 0 32px 0;
+  color: #fff;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px; /* thêm padding cho cân đối */
+  display: flex;
+  gap: 36px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  min-width: 270px;
+  max-width: 290px;
+  margin-right: 40px;
+  flex: 1;
+}
+.footer-logo {
+  width: 170px;
+  margin-bottom: 18px;
+}
+.footer-slogan {
+  font-size: 1.15rem;
+  margin-bottom: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.footer-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.footer-btn {
+  display: inline-block;
+  font-weight: bold;
+  border-radius: 7px;
+  font-size: 1.05rem;
+  padding: 9px 28px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.18s;
+  border: 2px solid #ffe600;
+}
+.footer-btn-primary {
+  background: #ffe600;
+  color: #2a2e92;
+}
+.footer-btn-outline {
+  background: transparent;
+  color: #ffe600;
+}
+.footer-btn:hover {
+  filter: brightness(1.12);
+  opacity: 0.95;
+}
+.footer-socials {
+  margin-bottom: 14px;
+}
+.footer-socials a {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.footer-socials img {
+  width: 28px;
+  height: 28px;
+}
+.footer-lang {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-lang-vn {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: bold;
+  color: #ffe600;
+}
+.footer-lang-vn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+}
+.footer-links {
+  display: flex;
+  gap: 48px 36px;
+  flex-wrap: wrap;
+  flex: 3 1 0%;
+}
+.footer-col {
+  min-width: 150px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.footer-title {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.footer-col a {
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.footer-col a:hover {
+  color: #ffe600;
+}
+.cinestar-login-popup-bg {
+  position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(10,20,40,0.6); z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+}
+.cinestar-login-popup {
+  background: #141a3b;
+  color: #fff;
+  padding: 36px 32px 28px 32px;
+  border-radius: 18px;
+  min-width: 320px;
+  max-width: 94vw;
+  position: relative;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.3);
+}
+.cinestar-login-popup h2 {
+  font-size: 1.6rem; margin-bottom: 22px; color: #ffe600; font-weight: bold;
+  text-align: center;
+}
+.cinestar-login-popup input[type="text"],
+.cinestar-login-popup input[type="password"] {
+  display: block; width: 100%; margin-bottom: 18px; padding: 12px;
+  border-radius: 7px; border: none; font-size: 1rem;
+  background: #21285a; color: #fff;
+}
+.cinestar-login-popup button[type="submit"] {
+  width: 100%; padding: 12px; border-radius: 7px;
+  background: #ffe600; color: #2a2e92; font-weight: bold; font-size: 1.06rem;
+  border: none; cursor: pointer; transition: background 0.22s;
+}
+.cinestar-login-popup button[type="submit"]:hover {
+  background: #fff052;
+}
+.cinestar-login-popup .login-links {
+  margin-top: 14px; text-align: center;
+}
+.cinestar-login-popup .login-links a {
+  color: #ffe600; margin: 0 8px; text-decoration: none; font-size: 0.98rem;
+}
+.cinestar-login-close {
+  position: absolute; top: 10px; right: 18px; font-size: 2rem; color: #ffe600;
+  cursor: pointer; font-weight: bold; line-height: 1;
+}
+@media (max-width: 1100px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 24px;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 24px 16px;
+  }
+}
+@media (max-width: 700px) {
+  .cinestar-footer-bg {
+    padding: 32px 0 16px 0;
+  }
+  .footer-brand {
+    margin-bottom: 32px;
+    margin-right: 0;
+    max-width: 100%;
+  }
+  .footer-col {
+    min-width: 120px;
+    font-size: 0.98rem;
+  }
+}

@@ -40,21 +40,7 @@ get_header();
   </div>
 </section>
 <style>
-.membership-page-section {
-    font-family: 'Montserrat', Arial, sans-serif;
-}
-@media (max-width: 1200px) {
-  .membership-content { padding-left:10px;padding-right:10px; }
-  .membership-row { flex-direction:column !important;gap:38px 0!important; }
-  .membership-desc, .membership-img { max-width:100%!important;text-align:center!important; }
-  .membership-img img { max-width:98vw!important; }
-}
-@media (max-width: 700px) {
-  .membership-row { gap:24px 0!important; }
-  .membership-desc ul { font-size:1rem !important;}
-  .membership-desc h2 { font-size:1.3rem !important;}
-  .membership-img img { max-width:100vw!important;height:auto!important;}
-}
+
 </style>
 
 <?php get_footer(); ?>
