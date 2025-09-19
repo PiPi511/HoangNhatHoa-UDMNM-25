@@ -31,8 +31,7 @@
                         <?php if(get_field('quoc_gia')): ?><span>🌏 <?php the_field('quoc_gia'); ?></span><?php endif; ?>
                         <?php if(get_field('phu_de')): ?><span>💬 <?php the_field('phu_de'); ?></span><?php endif; ?>
                     </div>
-                    <?php if(get_field('mo_ta')): ?>
-                        <div class="movie-desc"><?php the_field('mo_ta'); ?></div>
+                    
                     <?php endif; ?>
 
                     <!-- SHOWTIMES (ACF FREE - MULTI FIELD GROUP) -->

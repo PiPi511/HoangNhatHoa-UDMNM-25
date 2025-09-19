@@ -1,25 +1,23 @@
 .cinestar-movies-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     gap: 32px 36px;
     margin: 40px auto 0 auto;
     max-width: 1150px;
-    /* Thêm padding để tránh box sát mép */
     padding: 0 16px;
 }
 
-.cinestar-movie-box {
+.cinestar-movie-horizontal {
     display: flex;
     flex-direction: row;
+    align-items: stretch;
     background: #181f37;
     border-radius: 16px;
     overflow: hidden;
-    min-height: 320px;
-    align-items: stretch;
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    /* Đảm bảo box co giãn theo grid */
-    width: 100%;
+    margin-bottom: 32px;
     min-width: 0;
+    width: 100%;
 }
 
 .movie-poster {
@@ -34,24 +32,26 @@
     width: 220px;
     height: 320px;
     object-fit: cover;
-    display: block;
     border-radius: 10px 0 0 10px;
+    display: block;
 }
 
 .movie-info {
-    padding: 28px 32px 28px 32px;
-    color: #fff;
     flex: 1;
+    padding: 32px 30px 32px 30px;
+    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-width: 0; /* Cho phép nội dung co lại nếu không đủ chỗ */
+    min-width: 0;
+    overflow: hidden;
+    word-break: break-word;
 }
 
 .movie-title {
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     letter-spacing: 0.5px;
 }
 
@@ -77,10 +77,10 @@
     font-size: 0.98rem;
 }
 
-.cinestar-btn {
+.cinestar-btn, .showtime-link {
     display: inline-block;
-    background: #e50914;
-    color: #fff;
+    background: #ffe600;
+    color: #222;
     padding: 9px 18px;
     border-radius: 6px;
     text-decoration: none;
@@ -89,7 +89,7 @@
     transition: background 0.2s;
 }
 
-.cinestar-btn:hover {
+.cinestar-btn:hover, .showtime-link:hover {
     background: #fff;
     color: #e50914;
     border: 1px solid #e50914;
@@ -129,7 +129,7 @@
         grid-template-columns: 1fr;
         padding: 0 8px;
     }
-    .cinestar-movie-box {
+    .cinestar-movie-horizontal {
         flex-direction: column;
         min-width: 0;
         min-height: 0;
@@ -137,10 +137,11 @@
     }
     .movie-poster img {
         width: 100%;
-        height: 270px;
+        height: 220px;
         border-radius: 10px 10px 0 0;
     }
     .movie-info {
         padding: 20px 14px;
+        min-width: 0;
     }
 }

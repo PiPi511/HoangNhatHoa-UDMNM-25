@@ -110,4 +110,25 @@
 </nav>
 
 <!-- Thông tin rạp Cinestar Huế -->
-<?php get_template_part('template-parts/cinestar-cinema-info'); ?>
+<?php get_template_part('template-parts/cinestar-cinema-info'); ?>'
+<!-- Menu tab phim đặc biệt -->
+<!-- <div class="phim-tabs" style="
+    display:flex;
+    background:linear-gradient(90deg,#4639a5 0%,#2a2762 100%);
+    margin-top:0;
+    margin-bottom:0;
+    border-bottom:4px solid #1a1a2e;
+    ">
+  <div class="tab-item active" style="flex:1; text-align:center; padding:22px 0 16px 0; color:#fff; font-size:1.35rem; font-weight:800; cursor:pointer; border-bottom:4px solid #ffe600;">
+    PHIM ĐANG CHIẾU
+  </div>
+  <div class="tab-item" style="flex:1; text-align:center; padding:22px 0 16px 0; color:#ffe600; font-size:1.35rem; font-weight:800; cursor:pointer;">
+    PHIM SẮP CHIẾU
+  </div>
+  <div class="tab-item" style="flex:1; text-align:center; padding:22px 0 16px 0; color:#fff; font-size:1.35rem; font-weight:800; cursor:pointer;">
+    SUẤT CHIẾU ĐẶC BIỆT
+  </div>
+  <div class="tab-item" style="flex:1; text-align:center; padding:22px 0 16px 0; color:#fff; font-size:1.35rem; font-weight:800; cursor:pointer;">
+    BẢNG GIÁ VÉ
+  </div>
+</div> -->

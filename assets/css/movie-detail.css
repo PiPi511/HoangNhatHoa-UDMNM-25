@@ -1,0 +1,126 @@
+.movie-detail-container {
+    max-width: 1100px;
+    margin: 40px auto 0 auto;
+    padding: 0 16px;
+}
+.movie-detail-main {
+    display: flex;
+    flex-direction: row;
+    gap: 44px;
+    background: #181f37;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 50px 40px;
+    align-items: flex-start;
+}
+.movie-detail-poster {
+    flex: 0 0 360px;
+    background: #511fcd;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 520px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.movie-detail-img {
+    width: 340px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 13px;
+    display: block;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+}
+.movie-detail-info {
+    flex: 1;
+    color: #fff;
+    min-width: 0;
+}
+.movie-detail-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.age-tag {
+    font-size: 1.2rem;
+    color: #ffd600;
+    margin-left: 12px;
+    font-weight: 700;
+}
+.movie-detail-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px 0;
+}
+.movie-detail-meta li {
+    font-size: 1.18rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.movie-detail-meta .meta-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    margin-right: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.movie-detail-meta span {
+    color: #ffe600;
+    font-weight: 700;
+    margin-right: 5px;
+}
+.age-warning {
+    background: #ffe600;
+    color: #222;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 5px;
+    margin-top: 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.movie-detail-desc h2,
+.movie-detail-description h2 {
+    font-size: 1.13rem;
+    color: #ffe600;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.movie-detail-director,
+.movie-detail-cast,
+.movie-detail-date {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: #eee;
+}
+.movie-detail-description p {
+    font-size: 1.16rem;
+    color: #ffffff;
+    margin-top: 6px;
+    line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+    .movie-detail-main {
+        flex-direction: column;
+        gap: 24px;
+        padding: 24px 12px;
+    }
+    .movie-detail-poster {
+        justify-content: flex-start;
+        min-height: 0;
+    }
+    .movie-detail-img {
+        width: 96vw;
+        height: auto;
+        max-width: 360px;
+    }
+}

@@ -1,20 +1,25 @@
-
 .cinestar-footer {
-  width: 100%;
+  width: 100vw;
   position: relative;
+  margin: 0;
+  padding: 0;
+  background: none !important; /* Xóa nền đen mặc định nếu có */
 }
 
 .cinestar-footer-bg {
-  width: 100%;
+  width: 100vw;
   background: radial-gradient(circle at 70% 30%, #7a3cff 0%, #2a2e92 50%, #5b0d8e 100%);
   padding: 56px 0 32px 0;
   color: #fff;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .footer-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 32px; /* thêm padding cho cân đối */
+  padding: 0 32px;
   display: flex;
   gap: 36px;
   justify-content: flex-start;
@@ -196,4 +201,7 @@
     min-width: 120px;
     font-size: 0.98rem;
   }
+}
+body > .cinestar-footer {
+  margin: 0 !important;
 }
