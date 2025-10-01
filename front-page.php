@@ -85,9 +85,14 @@
                             }
                             if($has_showtimes) echo '</div>';
                             ?>
-                            <a href="<?php the_permalink(); ?>" class="cinestar-btn">
-                                🎥 Xem trailer
-                            </a>
+                            <?php
+                                $trailer_url = get_field('trailer');
+                                if($trailer_url):
+                                ?>
+                                    <button type="button" class="cinestar-btn btn-trailer" data-trailer="<?php echo esc_url($trailer_url); ?>">
+                                        🎥 Xem trailer
+                                    </button>
+                                <?php endif; ?>
                         </div>
                     </div>
                 <?php endwhile;
@@ -98,8 +103,10 @@
             <?php endif; ?>
         </div>
     </div>
-
-    <?php get_template_part('template-parts/slider-backtoschool'); ?>
+     <?php
+    echo do_shortcode('[smartslider3 slider="2"]');
+    ?>
+    <!-- < get_template_part('template-parts/slider-backtoschool'); ?> -->
     <?php get_template_part('template-parts/promotion-slider'); ?>
     <?php get_template_part('template-parts/membership-section'); ?>
     <?php get_template_part('template-parts/entertainment-services'); ?>

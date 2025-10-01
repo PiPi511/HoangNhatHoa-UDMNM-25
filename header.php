@@ -13,7 +13,7 @@
 <body <?php body_class('bg-gray-900 text-white'); ?>>
 <?php if (function_exists('wp_body_open')) wp_body_open(); ?>
 
-<!-- Header trên cùng: logo, nút, tìm kiếm, user, ngôn ngữ -->
+<!-- Header trên cùng -->
 <header class="bg-gray-900 py-2 shadow-md">
     <div class="container mx-auto flex items-center justify-between px-4">
         <!-- Logo -->
@@ -43,15 +43,13 @@
         <form action="<?php echo esc_url(home_url('/')); ?>" method="get" class="hidden md:flex items-center relative">
             <input type="text" name="s" placeholder="Tìm phim, rạp" class="rounded px-4 py-2 w-56 text-gray-900 pr-10" />
             <button type="submit" class="absolute right-2">
-                <!-- SVG icon kính lúp -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.5 10.5a7.5 7.5 0 0013.15 6.15z" />
                 </svg>
             </button>
         </form>
-        <!-- User + Đăng nhập (thêm class để popup hoạt động) + Language -->
+        <!-- User + Đăng nhập + Language -->
         <div class="flex items-center gap-4">
-            <!-- User -->
             <a href="#" class="flex items-center gap-1 hover:text-yellow-400 transition cinestar-login-link">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 12a5 5 0 100-10 5 5 0 000 10zm-7 8a7 7 0 0114 0H3z"/>
@@ -67,7 +65,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <!-- Dropdown menu -->
                 <div class="absolute right-0 mt-2 w-32 bg-white text-gray-900 rounded shadow-lg z-10 hidden group-hover:block">
                     <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-100">
                         <img src="https://cdn.countryflags.com/thumbs/vietnam/flag-round-250.png" alt="VN flag" class="h-4 w-4 mr-2 rounded-full">
@@ -80,14 +77,18 @@
                 </div>
             </div>
         </div>
+        <!-- Hamburger menu icon for mobile, ẩn trên desktop -->
+        <button class="mobile-nav-toggle" aria-label="Mở menu" style="display:none;">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><rect y="7" width="32" height="3" rx="1.5"/><rect y="15" width="32" height="3" rx="1.5"/><rect y="23" width="32" height="3" rx="1.5"/></svg>
+        </button>
     </div>
 </header>
 
 <!-- Menu trái-phải ngay dưới header -->
-<nav class="bg-gray-900">
+<nav class="bg-gray-900" style="position:relative;">
     <div class="container mx-auto flex justify-between items-center px-4 border-b border-gray-800">
         <!-- Menu trái -->
-        <div>
+        <div class="menu_left">
             <?php
             wp_nav_menu([
                 'theme_location' => 'menu_left',
@@ -97,7 +98,7 @@
             ?>
         </div>
         <!-- Menu phải -->
-        <div>
+        <div class="menu_right">
             <?php
             wp_nav_menu([
                 'theme_location' => 'menu_right',
@@ -107,28 +108,40 @@
             ?>
         </div>
     </div>
+    <!-- Mobile menu (ẩn mặc định, hiện khi active) -->
+    <div class="mobile-menu">
+        <?php
+        wp_nav_menu([
+            'theme_location' => 'menu_left',
+            'menu_class'     => 'flex flex-col',
+            'container'      => false
+        ]);
+        wp_nav_menu([
+            'theme_location' => 'menu_right',
+            'menu_class'     => 'flex flex-col',
+            'container'      => false
+        ]);
+        ?>
+    </div>
 </nav>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var navToggle = document.querySelector('.mobile-nav-toggle');
+    var mobileMenu = document.querySelector('.mobile-menu');
+    function checkMobile() {
+        if(window.innerWidth <= 768){
+            navToggle.style.display = 'flex';
+        } else {
+            navToggle.style.display = 'none';
+            mobileMenu.classList.remove('active');
+        }
+    }
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    navToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+    });
+});
+</script>
 
-<!-- Thông tin rạp Cinestar Huế -->
 <?php get_template_part('template-parts/cinestar-cinema-info'); ?>'
-<!-- Menu tab phim đặc biệt -->
-<!-- <div class="phim-tabs" style="
-    display:flex;
-    background:linear-gradient(90deg,#4639a5 0%,#2a2762 100%);
-    margin-top:0;
-    margin-bottom:0;
-    border-bottom:4px solid #1a1a2e;
-    ">
-  <div class="tab-item active" style="flex:1; text-align:center; padding:22px 0 16px 0; color:#fff; font-size:1.35rem; font-weight:800; cursor:pointer; border-bottom:4px solid #ffe600;">
-    PHIM ĐANG CHIẾU
-  </div>
-  <div class="tab-item" style="flex:1; text-align:center; padding:22px 0 16px 0; color:#ffe600; font-size:1.35rem; font-weight:800; cursor:pointer;">
-    PHIM SẮP CHIẾU
-  </div>
-  <div class="tab-item" style="flex:1; text-align:center; padding:22px 0 16px 0; color:#fff; font-size:1.35rem; font-weight:800; cursor:pointer;">
-    SUẤT CHIẾU ĐẶC BIỆT
-  </div>
-  <div class="tab-item" style="flex:1; text-align:center; padding:22px 0 16px 0; color:#fff; font-size:1.35rem; font-weight:800; cursor:pointer;">
-    BẢNG GIÁ VÉ
-  </div>
-</div> -->

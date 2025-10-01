@@ -1,0 +1,206 @@
+/* Tối ưu mobile styles cho header & nav */
+body {
+    margin: 0;
+    padding: 0;
+}
+.cinestar-header-main,
+.cinestar-header-actions,
+.cinestar-header-search,
+.cinestar-header-user,
+.cinestar-header-lang,
+.cinestar-header-btns {
+    display: flex;
+    align-items: center;
+}
+.cinestar-header-main {
+    justify-content: space-between;
+    padding: 10px 12px;
+}
+.cinestar-header-actions {
+    gap: 8px;
+}
+.cinestar-header-btns a {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 7px 18px;
+    text-decoration: none;
+    transition: all 0.18s;
+}
+.cinestar-header-btns .ticket-btn {
+    background: #ffe600;
+    color: #2a2e92;
+    border: 2px solid #ffe600;
+    margin-right: 4px;
+}
+.cinestar-header-btns .popcorn-btn {
+    background: #7a3cff;
+    color: #fff;
+    border: 2px solid #7a3cff;
+}
+.cinestar-header-btns a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 9px;
+}
+.cinestar-header-search {
+    position: relative;
+    flex: 1;
+}
+.cinestar-header-search input {
+    width: 100%;
+    max-width: 260px;
+    padding: 7px 36px 7px 14px;
+    border-radius: 6px;
+    border: none;
+    background: #fff;
+    color: #222;
+    font-size: 1rem;
+}
+.cinestar-header-search button {
+    position: absolute;
+    right: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.cinestar-header-user {
+    gap: 8px;
+    margin-left: 8px;
+}
+.cinestar-header-user svg {
+    width: 20px; height: 20px;
+}
+.cinestar-header-user span {
+    font-weight: 600;
+}
+.cinestar-header-lang {
+    gap: 5px;
+    margin-left: 8px;
+    position: relative;
+}
+.cinestar-header-lang img {
+    width: 18px; height: 18px; border-radius: 50%;
+    margin-right: 2px;
+}
+.cinestar-header-lang .lang-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.cinestar-header-lang .lang-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 28px;
+    background: #fff;
+    color: #222;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    z-index: 20;
+    min-width: 110px;
+}
+.cinestar-header-lang .lang-menu a {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    color: #222;
+    text-decoration: none;
+    font-size: 0.98rem;
+    border-bottom: 1px solid #eee;
+}
+.cinestar-header-lang .lang-menu a:last-child {
+    border-bottom: none;
+}
+.cinestar-header-lang:hover .lang-menu,
+.cinestar-header-lang:focus-within .lang-menu {
+    display: block;
+}
+/* Mobile nav */
+.cinestar-nav {
+    background: #181f37;
+    border-bottom: 2px solid #1a1a2e;
+    padding: 0;
+}
+.cinestar-nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 8px;
+    gap: 8px;
+}
+.cinestar-menu {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.cinestar-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 8px 0;
+    transition: color 0.18s;
+}
+.cinestar-menu-item svg,
+.cinestar-menu-item img {
+    width: 22px;
+    height: 22px;
+}
+@media (max-width: 900px) {
+    .cinestar-header-main {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 14px 4px 10px 4px;
+    }
+    .cinestar-header-actions {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    .cinestar-header-btns {
+        flex-direction: row;
+        gap: 6px;
+        margin-bottom: 7px;
+    }
+    .cinestar-header-search input {
+        max-width: 98vw;
+    }
+}
+@media (max-width: 700px) {
+    .cinestar-header-main {
+        padding: 10px 2px;
+    }
+    .cinestar-header-btns a {
+        font-size: 0.97rem;
+        padding: 7px 10px;
+    }
+    .cinestar-header-search input {
+        font-size: 0.93rem;
+        padding-left: 10px;
+    }
+    .cinestar-menu {
+        gap: 11px;
+    }
+    .cinestar-menu-item {
+        font-size: 0.97rem;
+        padding: 7px 0;
+    }
+    .cinestar-menu-item svg,
+    .cinestar-menu-item img {
+        width: 19px;
+        height: 19px;
+    }
+}

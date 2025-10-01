@@ -93,6 +93,15 @@
 </div>
 
 <?php wp_footer(); ?>
+<!-- Modal Trailer -->
+<div id="trailer-modal-bg" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85);">
+  <div style="background:#000; max-width:800px; width:90vw; margin:60px auto; border-radius:10px; position:relative;">
+    <span id="trailer-modal-close" style="position:absolute; right:20px; top:10px; font-size:38px; color:#fff; cursor:pointer;">&times;</span>
+    <div style="position:relative; padding-bottom:56.25%; height:0;">
+      <iframe id="trailer-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 
@@ -114,4 +123,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+</script>
+<script>
+document.querySelectorAll('.btn-trailer').forEach(function(btn){
+    btn.onclick = function(){
+        var url = this.getAttribute('data-trailer');
+        document.getElementById('trailer-video').src = url + (url.includes('youtube.com') ? '?autoplay=1' : '');
+        document.getElementById('trailer-modal-bg').style.display = 'block';
+    }
+});
+document.getElementById('trailer-modal-close').onclick = function() {
+    document.getElementById('trailer-modal-bg').style.display = 'none';
+    document.getElementById('trailer-video').src = '';
+};
+window.onclick = function(event) {
+    var modalBg = document.getElementById('trailer-modal-bg');
+    if (event.target == modalBg) {
+        modalBg.style.display = "none";
+        document.getElementById('trailer-video').src = '';
+    }
+};
 </script>

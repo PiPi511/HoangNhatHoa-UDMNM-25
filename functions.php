@@ -75,19 +75,19 @@ if ( ! function_exists( 'cinestar_widgets_init' ) ) {
 add_action('widgets_init', 'cinestar_widgets_init');
 
 // ===== Đăng ký Post Type: Phim =====
-function register_phim_post_type() {
-    register_post_type('phim', array(
-        'labels' => array(
-            'name' => 'Phim',
-            'singular_name' => 'Phim',
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'menu_icon' => 'dashicons-format-video',
-        'supports' => array('title', 'editor', 'thumbnail'),
-    ));
-}
-add_action('init', 'register_phim_post_type');
+// function register_phim_post_type() {
+//     register_post_type('phim', array(
+//         'labels' => array(
+//             'name' => 'Phim',
+//             'singular_name' => 'Phim',
+//         ),
+//         'public' => true,
+//         'has_archive' => true,
+//         'menu_icon' => 'dashicons-format-video',
+//         'supports' => array('title', 'editor', 'thumbnail'),
+//     ));
+// }
+// add_action('init', 'register_phim_post_type');
 
 
 // ===== Đăng ký Taxonomy: Nhóm phim =====
@@ -120,5 +120,23 @@ function cinestar_enqueue_styles() {
     wp_enqueue_style('cinestar-movies', get_template_directory_uri() . '/assets/css/archive-movie.css');
     wp_enqueue_style('cinestar-membership', get_template_directory_uri() . '/assets/css/membership.css');
         wp_enqueue_style('cinestar-nav', get_template_directory_uri() . '/assets/css/nav.css');
+        wp_enqueue_style('cinestar-mobile', get_template_directory_uri() . '/assets/css/mobile.css');
 }
+
+
 add_action('wp_enqueue_scripts', 'cinestar_enqueue_styles');
+
+
+function register_dichvu_post_type() {
+    register_post_type('dichvu', array(
+        'labels' => array(
+            'name' => 'Dịch vụ',
+            'singular_name' => 'Dịch vụ',
+        ),
+        'public' => true,
+        'has_archive' => false,
+        'menu_icon' => 'dashicons-hammer',
+        'supports' => array('title', 'thumbnail', 'editor'),
+    ));
+}
+add_action('init', 'register_dichvu_post_type');
